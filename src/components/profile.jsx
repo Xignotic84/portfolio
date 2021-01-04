@@ -20,6 +20,7 @@ export default function Profile() {
             <hr className="underline"/>
           </div>
           <div className="socials">
+            
             <a name="github" rel="noreferrer" href="https://github.com/Xignotic84" target="_blank"><i className="fab fa-github"/></a>
             <a name="twitter" rel="noreferrer" href="https://twitter.com/Xignotic" target="_blank"><i className="fab fa-twitter"/></a>
           </div>
