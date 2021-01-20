@@ -60,6 +60,15 @@ a:hover {
   min-height: 60vh;
 }
 
+
+.profile .email {
+  color: var(--gray)
+}
+
+.profile .email:hover {
+  color: var(--red)
+}
+
 .profile .name {
   font-size: 64px;
   grid-area: name;
@@ -188,6 +197,5 @@ a:hover {
     display: inline-block;
     grid-template-columns: 0;
     column-count: inherit;
-    width: 390px;
   }
 }

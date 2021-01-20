@@ -17,10 +17,10 @@ export default function Profile() {
           <div className="name-holder">
             <p className="introduction"> Hello I am</p>
             <h1 className="name"> Xignotic </h1>
+            <a className="email" name="email" rel="noreferrer" href="mailto:@contact@xignotic.dev" target="_blank">contact@xignotic.dev</a>
             <hr className="underline"/>
           </div>
           <div className="socials">
-            
             <a name="github" rel="noreferrer" href="https://github.com/Xignotic84" target="_blank"><i className="fab fa-github"/></a>
             <a name="twitter" rel="noreferrer" href="https://twitter.com/Xignotic" target="_blank"><i className="fab fa-twitter"/></a>
           </div>
