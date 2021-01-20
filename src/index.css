@@ -62,7 +62,8 @@ a:hover {
 
 
 .profile .email {
-  color: var(--gray)
+  color: var(--gray);
+  user-select: inherit;
 }
 
 .profile .email:hover {
