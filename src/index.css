@@ -184,7 +184,13 @@ a:hover {
     }
 
     .inline {
-        margin-top: 10vh;
+        margin: 10vh auto;
+        text-align: center
+    }
+
+    hr {
+        width: 100px;
+        margin: auto;
     }
 
     .inline.small {
