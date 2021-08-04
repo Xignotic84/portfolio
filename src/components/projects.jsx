@@ -12,7 +12,7 @@ export default function Projects() {
                     position='Full-Stack Developer'
                     description='DBL Statistics is an analytical project that uses data from Top.gg. This project was unfunded and was worked on by myself and two others. We decided to take on this project to provide developers and community members regular and consistent data regarding the growth and progress of the bots they use and create.'/>
       < Projectcard url='https://shiro.gg' image='/shiro' title='Shiro' position='Founder and Developer'
-                    date="September 2018 - Current"
+                    date="September 2018 - Present"
                     description='I am the founder and currently a developer for Shiro. Shiro is a multi-functional project that provides an public API and a Discord Bot.'/>
     </div>
   )
