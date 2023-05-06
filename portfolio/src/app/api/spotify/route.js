@@ -1,7 +1,4 @@
-import { NextResponse } from 'next/server';
-
-const spotifyAPIBaseUri = 'https://api.spotify.com'
-const spotifyAccountsBaseUri = 'https://accounts.spotify.com'
+import {NextResponse} from 'next/server';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
@@ -13,7 +10,7 @@ export async function fetchSpotifyArtistsAndTracks() {
     grant_type: "refresh_token",
     scope: "user-top-read",
     refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
-});
+  })
 
   const res = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -37,7 +34,7 @@ export async function fetchSpotifyArtistsAndTracks() {
   const tracks = await fetchWebApi('v1/me/top/tracks?time_range=short_term&limit=10', 'GET')
   const artists = await fetchWebApi('v1/me/top/artists?time_range=short_term&limit=10', 'GET')
 
-  return { tracks, artists }
+  return {tracks, artists}
 }
 
 async function fetchWebApi(endpoint, method, body) {
@@ -55,9 +52,8 @@ async function fetchWebApi(endpoint, method, body) {
   }
 }
 
-
 export async function GET() {
-
   const tracks = await fetchSpotifyArtistsAndTracks()
+
   return NextResponse.json(tracks);
 }
