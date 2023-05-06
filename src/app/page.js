@@ -7,7 +7,6 @@ import AboutMeBlock from "../components/AboutMeBlock";
 import TopSpotifyBlock from "../components/TopSpotifyBlock";
 
 
-
 const positions = [
   {
     company: 'DBL Statistics',
@@ -49,6 +48,7 @@ const projects = [
     url: 'https://dblstatistics.com'
   }
 ]
+
 
 export default function Home() {
   const {colorMode, toggleColorMode} = useColorMode()

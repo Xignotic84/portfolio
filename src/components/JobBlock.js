@@ -12,7 +12,7 @@ export default function JobBlock({position}) {
       <Avatar
           src={`/${position.image}.png`}
           borderRadius={7}
-          alt={position.company}
+          name={position.company}
       />
       <Box ml={4}>
         <Heading>

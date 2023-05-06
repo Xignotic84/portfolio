@@ -4,7 +4,7 @@ import Socials from "./Socials";
 export default function AboutMeBlock() {
   return <Box mt={100}>
     <Heading size={'4xl'}>
-      Heya, I am Xignotic!
+      Hey, I am Xignotic!
     </Heading>
     <Text mt={2} opacity={0.8} fontSize={'lg'}>
       I am a <Text as={'u'}>Full Stack Engineer</Text> based in Amsterdam, Netherlands. Currently studying at Vrije Universiteit Amsterdam.
