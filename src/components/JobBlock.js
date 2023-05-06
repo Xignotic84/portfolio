@@ -1,7 +1,8 @@
-import {Avatar, Box, Collapse, Fade, Flex, Heading, Tag, Text} from "@chakra-ui/react";
+import {Avatar, Box, Collapse, Fade, Flex, Heading, Tag, Text, useMediaQuery} from "@chakra-ui/react";
 import {useState} from "react";
 
 export default function JobBlock({position}) {
+  const [isMobile] = useMediaQuery("(min-width: 800px)")
 
   const [isExpanded, setExpanded] = useState(false)
 
@@ -15,12 +16,21 @@ export default function JobBlock({position}) {
           name={position.company}
       />
       <Box ml={4}>
-        <Heading>
-          {position?.company ?? "Unknown"}
-        </Heading>
-        <Text opacity={0.7}>
-          {position.title}
-        </Text>
+        <Flex flexDirection={isMobile ? 'row' : 'column-reverse'} justifyContent={'space-between'}>
+          <Box>
+            <Heading>
+              {position?.company ?? "Unknown"}
+            </Heading>
+            <Text opacity={0.7}>
+              {position.title}
+            </Text>
+          </Box>
+          <Box mb={1}>
+            <Tag right={0} top={0}>
+              {position.period}
+            </Tag>
+          </Box>
+        </Flex>
 
         <Collapse mt={2} startingHeight={44} in={isExpanded}>
           {position?.description ?? "Default description..."}
@@ -33,9 +43,6 @@ export default function JobBlock({position}) {
           {isExpanded ? 'Read Less' : 'Read More'}
         </Tag>}
       </Box>
-      <Tag position={'absolute'} right={0} top={0}>
-        {position.period}
-      </Tag>
     </Flex>
 
 
