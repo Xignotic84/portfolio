@@ -8,11 +8,9 @@ const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
 let accessToken = '';
 const authToken = Buffer.from(`${clientId}:${clientSecret}`,).toString("base64")
 
-export async function getSpotifyTracks() {
-  // forced to always get a new token because the spotify API is really nice and intuitive :)
+export async function fetchSpotifyArtistsAndTracks() {
   const params = new URLSearchParams({
     grant_type: "refresh_token",
-    redirect_uri: "https://spotify-refresh-token-generator.netlify.app",
     scope: "user-top-read",
     refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
 });
@@ -60,6 +58,6 @@ async function fetchWebApi(endpoint, method, body) {
 
 export async function GET() {
 
-  const tracks = await getSpotifyTracks()
+  const tracks = await fetchSpotifyArtistsAndTracks()
   return NextResponse.json(tracks);
 }
