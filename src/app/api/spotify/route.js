@@ -9,6 +9,7 @@ export async function fetchSpotifyArtistsAndTracks() {
   const params = new URLSearchParams({
     grant_type: "refresh_token",
     scope: "user-top-read",
+    redirect_uri: "https://spotify-refresh-token-generator.netlify.app",
     refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
   })
 
