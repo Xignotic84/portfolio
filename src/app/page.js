@@ -1,6 +1,6 @@
 'use client'
 
-import {Box, Divider, Flex, Heading, Icon, IconButton, SimpleGrid, useColorMode, useMediaQuery} from "@chakra-ui/react";
+import {Box, Divider, Flex, Heading, SimpleGrid, useColorMode, useMediaQuery} from "@chakra-ui/react";
 import JobBlock from "../components/JobBlock";
 import ProjectBlock from "../components/ProjectBlock";
 import AboutMeBlock from "../components/AboutMeBlock";
@@ -46,6 +46,11 @@ const projects = [
     name: 'DBL Statistics',
     image: 'dblstats-project',
     url: 'https://dblstatistics.com'
+  },
+  {
+    name: 'URL Shortener',
+    image: 'url-shortener',
+    url: 'https://shrt.xignotic.dev'
   }
 ]
 
@@ -78,11 +83,11 @@ export default function Home() {
           <Heading mt={5} ml={5} size={'lg'}>
             Projects
           </Heading>
-          <SimpleGrid>
+          <Box display={'flex'} flexDirection={!isMobile && 'column'}>
             {projects.map((p, i) => {
               return <ProjectBlock key={i} project={p}/>
             })}
-          </SimpleGrid>
+          </Box>
         </Box>
 
       </>
