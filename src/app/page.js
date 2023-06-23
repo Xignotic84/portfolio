@@ -9,6 +9,14 @@ import TopSpotifyBlock from "../components/TopSpotifyBlock";
 
 const positions = [
   {
+    company: 'Capisoft B.V.',
+    image: 'capisoft',
+    url: 'https://www.capisoft.nl/',
+    title: 'Full-Stack Engineer',
+    period: 'February 2023 - May 2023',
+    description: 'Developed a crypto-based CRM system which provided management of products, users and provided analytical data on purchases, revenue, users and more.'
+  },
+  {
     company: 'DBL Statistics',
     image: 'dblstats',
     url: 'https://dblstatistics.com',
