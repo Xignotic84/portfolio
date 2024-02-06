@@ -8,6 +8,7 @@ import {
 } from 'react-query'
 import './../../theme/style.css';
 import PageHead from "../components/Head";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function RootLayout({children}) {
   const queryClient = new QueryClient()
@@ -18,7 +19,6 @@ export default function RootLayout({children}) {
       <body>
       <Providers>
         <QueryClientProvider client={queryClient}>
-
           <Box m={'0 auto'} maxW={'72rem'}>
             {children}
           </Box>
