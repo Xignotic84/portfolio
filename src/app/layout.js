@@ -8,7 +8,6 @@ import {
 } from 'react-query'
 import './../../theme/style.css';
 import PageHead from "../components/Head";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function RootLayout({children}) {
   const queryClient = new QueryClient()

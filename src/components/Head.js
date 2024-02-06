@@ -1,4 +1,3 @@
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function PageHead() {
   return <head>
