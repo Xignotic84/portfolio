@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export default function PageHead() {
   return <head>
@@ -8,12 +9,7 @@ export default function PageHead() {
     <meta property="keywords"
           content="xignotic,development,dev,xig,xiggy,programmer,developer,full-stack,fullstack,frontend,backend,franz herrmann, franz"/>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HPYCRV7ND"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)}
-      gtag('js', new Date());
 
-      gtag('config', 'G-1HPYCRV7ND');
-    </script>
+    <GoogleTagManager gaId={'G-1HPYCRV7ND'}/>
   </head>
 }
