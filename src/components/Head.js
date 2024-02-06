@@ -8,6 +8,13 @@ export default function PageHead() {
     <meta name="description" content="Xignotic's portfolio"/>
     <meta property="keywords"
           content="xignotic,development,dev,xig,xiggy,programmer,developer,full-stack,fullstack,frontend,backend,franz herrmann, franz"/>
-    <GoogleAnalytics/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HPYCRV7ND"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1HPYCRV7ND');
+    </script>
   </head>
 }
