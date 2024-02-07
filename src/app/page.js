@@ -64,7 +64,6 @@ const projects = [
 
 
 export default function Home() {
-  const {colorMode, toggleColorMode} = useColorMode()
   const [isMobile] = useMediaQuery("(min-width: 800px)")
 
   return (

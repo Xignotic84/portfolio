@@ -3,6 +3,7 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import theme from './../../theme/theme'
+import {GoogleTagManager} from "@next/third-parties/google";
 
 export default class Document extends NextDocument {
   render() {
@@ -15,6 +16,7 @@ export default class Document extends NextDocument {
           <Main />
           <NextScript />
           </body>
+          <GoogleTagManager gaId={'G-1HPYCRV7ND'}/>
         </Html>
     )
   }
