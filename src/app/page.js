@@ -9,6 +9,14 @@ import TopSpotifyBlock from "../components/TopSpotifyBlock";
 
 const positions = [
   {
+    company: 'Booking.com',
+    image: 'booking.com',
+    url: 'https://booking.com/',
+    title: 'Software Engineer Intern',
+    period: 'July 2024 - August 2024',
+    description: 'Assigned to a Web Core Tech Team'
+  },
+  {
     company: 'Capisoft B.V.',
     image: 'capisoft',
     url: 'https://www.capisoft.nl/',

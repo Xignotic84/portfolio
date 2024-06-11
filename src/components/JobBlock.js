@@ -9,13 +9,13 @@ export default function JobBlock({position}) {
   return <Box cursor={position.url && 'pointer'} onClick={() => position.url && window.open(position.url, '_blank')}
               transition="all .25s ease" _hover={{transform: 'scale(1.02)', filter: "brightness(120%)",}} p={5} m={5}
               bg={'background.secondary'} maxW={'700px'} borderRadius={6}>
-    <Flex position={'relative'}>
+    <Flex position={'relative'} w={'100%'}>
       <Avatar
           src={`/${position.image}.png`}
           borderRadius={7}
           name={position.company}
       />
-      <Box ml={4}>
+      <Box ml={4} w={'100%'}>
         <Flex flexDirection={isMobile ? 'row' : 'column-reverse'} justifyContent={'space-between'}>
           <Box>
             <Heading>
@@ -33,10 +33,10 @@ export default function JobBlock({position}) {
         </Flex>
 
         <Collapse mt={2} startingHeight={44} in={isExpanded}>
-          {position?.description ?? "Default description..."}
+          {position?.description ?? ""}
         </Collapse>
 
-        {position.description.length > 200 && <Tag mt={1} cursor={'pointer'} onClick={(e) => {
+        {position.description?.length > 200 && <Tag mt={1} cursor={'pointer'} onClick={(e) => {
           e.stopPropagation()
           setExpanded(!isExpanded)
         }}>
