@@ -9,7 +9,7 @@ export default function Song({song}) {
       borderRadius={6}
       alt={song.name}
     />
-    <Box ml={2}>
+    <Box ml={2} maxW={'250px'}>
       <Heading size={'md'}>
         {song?.name}
       </Heading>
