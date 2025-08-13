@@ -1,4 +1,15 @@
-import {Avatar, Box, Collapse, Fade, Flex, Heading, Tag, Text, useMediaQuery} from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Collapse,
+  Flex,
+  Heading,
+  ListItem,
+  Tag,
+  Text,
+  UnorderedList,
+  useMediaQuery
+} from "@chakra-ui/react";
 import {useState} from "react";
 
 export default function JobBlock({position}) {
@@ -34,14 +45,23 @@ export default function JobBlock({position}) {
 
         <Collapse mt={2} startingHeight={44} in={isExpanded}>
           {position?.description ?? ""}
+          <UnorderedList>
+
+            {position.items?.map((item, i) => {
+              return <ListItem key={i}>
+                {item}
+              </ListItem>
+            })}
+          </UnorderedList>
         </Collapse>
 
-        {position.description?.length > 200 && <Tag mt={1} cursor={'pointer'} onClick={(e) => {
-          e.stopPropagation()
-          setExpanded(!isExpanded)
-        }}>
-          {isExpanded ? 'Read Less' : 'Read More'}
-        </Tag>}
+        {(position.description?.length > 200 || position.items?.length > 0) &&
+            <Tag mt={1} cursor={'pointer'} onClick={(e) => {
+              e.stopPropagation()
+              setExpanded(!isExpanded)
+            }}>
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </Tag>}
       </Box>
     </Flex>
 

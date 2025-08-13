@@ -7,7 +7,7 @@ export default function AboutMeBlock() {
       Hey, I am Xignotic!
     </Heading>
     <Text mt={2} opacity={0.8} fontSize={'lg'}>
-      I am a <Text as={'u'}>Full Stack Engineer</Text> based in Amsterdam, Netherlands. Currently studying at Vrije Universiteit Amsterdam.
+      I am a <Text as={'u'}>Full Stack Engineer</Text> based in Amsterdam, Netherlands. Currently working at <Text as={'b'}>Booking.com</Text>
     </Text>
 
     <Text mt={5} opacity={0.8} fontSize={'lg'}>
@@ -16,7 +16,7 @@ export default function AboutMeBlock() {
 
 
     <Text mt={5} opacity={0.8} fontSize={'lg'}>
-      ☕ Certified Coffee Addict
+      ☕ Coffee Addict
     </Text>
     <Socials/>
   </Box>

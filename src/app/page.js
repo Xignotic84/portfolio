@@ -1,6 +1,6 @@
 'use client'
 
-import {Box, Divider, Flex, Heading, SimpleGrid, useColorMode, useMediaQuery} from "@chakra-ui/react";
+import {Box, Divider, Flex, Heading, SimpleGrid, useMediaQuery} from "@chakra-ui/react";
 import JobBlock from "../components/JobBlock";
 import ProjectBlock from "../components/ProjectBlock";
 import AboutMeBlock from "../components/AboutMeBlock";
@@ -12,9 +12,36 @@ const positions = [
     company: 'Booking.com',
     image: 'booking.com',
     url: 'https://booking.com/',
+    title: 'Software Engineer',
+    period: 'September 2025 - Present',
+    description: 'Joining in September as a Software Engineer Graduate'
+  },
+  {
+    company: 'TopStats.gg',
+    image: 'topstats.gg',
+    url: 'https://dblstatistics.com',
+    title: 'Founder and Full-Stack Engineer',
+    period: 'June 2020 - October 2024',
+    description: 'TopStats.gg (previously DBLStatistics) is an analytical platform that provides statistics on Discord Bots and Servers.',
+    items: [
+      'Built and developed the website initially using Chakra ui V3, then migrated to Shadcn/UI.',
+      "Built and documented TopStats.gg's API.",
+    ]
+  },
+  {
+    company: 'Booking.com',
+    image: 'booking.com',
+    url: 'https://booking.com/',
     title: 'Software Engineer Intern',
     period: 'July 2024 - August 2024',
-    description: 'Assigned to a Web Core Tech Team'
+    description: 'Assigned to Capla, an internal web team that facilities interoperability across business unit\n' +
+        'tech-stacks. During my internship I:',
+    items: [
+      'Improved Developer Experience by implementing and deploying a React Hydration Debugger. That impacted ~600 software engineers.',
+      'Tested and documented the debugger alongside communicating with the community regarding the feature.',
+      'Addressed and fixed an Apollo query error and improved test coverage.',
+      'Communicated with different teams to address certain issues with Booking.com\'s design system.'
+    ]
   },
   {
     company: 'Capisoft B.V.',
@@ -29,7 +56,7 @@ const positions = [
     image: 'dblstats',
     url: 'https://dblstatistics.com',
     title: 'Full-Stack Engineer',
-    period: 'June 2020 - Present',
+    period: 'June 2020 - October 2024',
     description: 'DBL Statistics is an analytical project that uses data from Top.gg. This project was unfunded and was worked on by myself and two others. We decided to take on this project to provide developers and community members regular and consistent data regarding the growth and progress of the bots they use and create.'
   },
   {
