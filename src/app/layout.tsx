@@ -4,6 +4,7 @@ import "./globals.css";
 import {ReactNode} from "react";
 import Providers from "@/components/providers";
 import ThemeToggle from "../components/ThemeToggle";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,9 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-1HPYCRV7ND"></script>
-    </head>
+    <GoogleAnalytics gaId="G-1HPYCRV7ND" />
     <body className={`${geistSans.variable} ${geistMono.variable}`}>
     <Providers>
           <div className='p-5 lg:p-0 mx-auto max-w-[1280px]'>
