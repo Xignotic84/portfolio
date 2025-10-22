@@ -8,6 +8,7 @@ export default function ThemeToggle() {
   const {theme, setTheme} = useTheme()
 
   const isDarkTheme = theme === 'dark'
+
   return <Button variant={'outline'} className={'fixed bottom-4 right-4'} size={'icon'}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
       {isDarkTheme ? <Moon/> : <Sun/>}
