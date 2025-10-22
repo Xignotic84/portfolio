@@ -6,6 +6,8 @@ let accessToken = '';
 const authToken = Buffer.from(`${clientId}:${clientSecret}`,).toString("base64")
 
 export async function fetchSpotifyArtistsAndTracks() {
+  if (!process.env.SPOTIFY_REFRESH_TOKEN) throw new Error('SPOTIFY_REFRESH_TOKEN is undefined, please ensure to provide it')
+
   const params = new URLSearchParams({
     grant_type: "refresh_token",
     scope: "user-top-read",
@@ -24,21 +26,20 @@ export async function fetchSpotifyArtistsAndTracks() {
 
   const body = await res.json();
 
-  if (!res.ok || !res.body) {
-    console.log('Something went wrong fetching from spotify', res.status)
-    return
+  if (!res.ok) {
+    console.error(body)
+    return false
   }
 
-  const token = body.access_token;
-  accessToken = token
+  accessToken = body.access_token
 
-  const tracks = await fetchWebApi('v1/me/top/tracks?time_range=short_term&limit=10', 'GET')
-  const artists = await fetchWebApi('v1/me/top/artists?time_range=short_term&limit=10', 'GET')
+  const tracks = await fetchWebApi('v1/me/top/tracks?time_range=short_term&limit=15', 'GET')
+  const artists = await fetchWebApi('v1/me/top/artists?time_range=short_term&limit=15', 'GET')
 
   return {tracks, artists}
 }
 
-async function fetchWebApi(endpoint, method, body) {
+async function fetchWebApi(endpoint: string, method: string, body?: any) {
   const res = await fetch(`https://api.spotify.com/${endpoint}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -55,6 +56,11 @@ async function fetchWebApi(endpoint, method, body) {
 
 export async function GET() {
   const tracks = await fetchSpotifyArtistsAndTracks()
+
+  if (!tracks) return NextResponse.json({
+    code: 404,
+    message: 'No tracks found'
+  })
 
   return NextResponse.json(tracks);
 }
