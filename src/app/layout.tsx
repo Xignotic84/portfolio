@@ -28,15 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <GoogleAnalytics gaId="G-1HPYCRV7ND" />
-    <body className={`${geistSans.variable} ${geistMono.variable}`}>
-    <Providers>
-          <div className='p-5 lg:p-0 mx-auto max-w-[1280px]'>
-            <div className={'mt-8 mb-8'}>{children}</div>
-          </div>
-          <ThemeToggle/>
-        </Providers>
-      </body>
+      <GoogleAnalytics gaId="G-1HPYCRV7ND" />
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <Providers>
+            <div className='p-5 lg:p-0 mx-auto max-w-[1280px]'>
+              <div className={'mt-8 mb-8'}>{children}</div>
+            </div>
+            <ThemeToggle/>
+          </Providers>
+        </body>
     </html>
   );
 }

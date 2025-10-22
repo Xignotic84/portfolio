@@ -59,6 +59,7 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
   {
     id: "3",
     companyName: "Capisoft B.V.",
+    companyUrl: 'https://www.capisoft.com/',
     companyLogo: "capisoft.png",
     positions: [
       {
