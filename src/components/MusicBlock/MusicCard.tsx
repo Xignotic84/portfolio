@@ -17,8 +17,8 @@ export default function MusicEntity({title, subTitle, url, avatar}: MusicEntryPr
         src={avatar}
         name={title}
       />
-      <div className={'flex-row align-start'}>
-        <h3 className={'flex justify-start text-lg'}>{title}</h3>
+      <div className={'flex-row align-start w-85'}>
+        <h3 className={'justify-start truncate text-lg line-clamp-1"'}>{title}</h3>
         <p className={'flex justify-start text-muted-foreground'}>{subTitle}</p>
       </div>
     </Button>
