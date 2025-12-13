@@ -1,9 +1,13 @@
-# Base image
+# ==========================
+# 1. Base image
+# ==========================
 FROM node:24-alpine AS base
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
 
-# Install dependencies
+# ==========================
+# 2. Dependencies
+# ==========================
 FROM base AS deps
 COPY package*.json yarn.lock* pnpm-lock.yaml* .npmrc* ./
 RUN \
@@ -13,12 +17,15 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-# Build stage
+# ==========================
+# 3. Build stage
+# ==========================
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Build Next.js in standalone mode
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
@@ -26,25 +33,31 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-# Production stage
+# ==========================
+# 4. Production image
+# ==========================
 FROM node:24-alpine AS runner
 WORKDIR /app
 
-# Non-root user
-RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 -G nodejs nextjs
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs \
+    && adduser --system --uid 1001 -G nodejs nextjs
 
+# Environment variables
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Copy public folder (optional)
-COPY --from=builder /app/public ./public
-
 # Copy standalone build from builder
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone/ ./
 
-# Use the standalone server.js entry point
-USER nextjs
+# Copy public folder (optional)
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+# Expose port and use non-root user
 EXPOSE 3000
+USER nextjs
+
+# Run standalone server.js
 CMD ["node", "server.js"]
