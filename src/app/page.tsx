@@ -1,17 +1,34 @@
-import WorkExperience from "@/components/WorkExperience";
-import {Separator} from "@/components/ui/separator";
-import Hero from "@/components/Hero";
-import MusicBlock from "@/components/MusicBlock";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { StructuredData } from "@/components/layout/structured-data";
+import { Education, Experience } from "@/components/sections/experience";
+import { Hero } from "@/components/sections/hero";
+import { Projects } from "@/components/sections/projects";
+import { Stack } from "@/components/sections/stack";
+import { topStatsQuery } from "@/lib/query/options";
+import { HOME_GRAPH } from "@/lib/structured-data";
+import { getTopStatsSummary } from "@/lib/topstats";
 
-export default function Home() {
+export const revalidate = 300;
+
+export default async function Home() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({ ...topStatsQuery, queryFn: getTopStatsSummary, retry: false });
+
   return (
-    <div className={'flex-row space-y-4'}>
-      <Hero/>
-      <Separator/>
-      <div className="grid grid-cols-1 md:grid-cols-3 s gap-4">
-        <WorkExperience/>
-        <MusicBlock/>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <StructuredData data={HOME_GRAPH} />
+      <Hero />
+
+      <div className="grid gap-14 lg:grid-cols-3 lg:gap-10">
+        <div className="space-y-14 lg:col-span-2">
+          <Experience />
+          <Education />
+          <Projects />
+        </div>
+        <aside className="lg:sticky lg:top-6 lg:self-start">
+          <Stack />
+        </aside>
       </div>
-    </div>
+    </HydrationBoundary>
   );
 }

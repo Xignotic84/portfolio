@@ -1,51 +1,53 @@
-import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { ReactNode } from "react";
+import { Analytics } from "@/components/layout/analytics";
+import { Providers } from "@/components/layout/providers";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 import "./globals.css";
-import {ReactNode} from "react";
-import Providers from "@/components/providers";
-import ThemeToggle from "../components/ThemeToggle";
-import {GoogleAnalytics} from '@next/third-parties/google'
-import Script from "next/script";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: "Xignotic",
-  description: "Xignotic is a Full Stack Engineer based in Amsterdam, Netherlands. Find out more here.",
+  ...pageMetadata({ description: site.description, path: "/", type: "profile" }),
+  metadataBase: new URL(site.url),
+  title: { default: site.title, template: `%s · ${site.name}` },
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: [...site.keywords],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  category: "technology",
+  formatDetection: { email: false, address: false, telephone: false },
 };
 
-export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
-  children: ReactNode;
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-    <Script async src="https://analytics.xignotic.dev/js/pa-QOkTuDzFHNNbUE6xPCD02.js"></Script>
-    <Script
-      id="next-plausible-init"
-      dangerouslySetInnerHTML={{
-        __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
-      }}
-    />
-    <body className={`${geistSans.variable} ${geistMono.variable}`}>
-    <GoogleAnalytics gaId="G-1HPYCRV7ND"/>
-    <Providers>
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fcfcfc" },
+    { media: "(prefers-color-scheme: dark)", color: "#131313" },
+  ],
+  colorScheme: "light dark",
+};
 
-      <div className='p-5 lg:p-0 mx-auto max-w-[1280px]'>
-        <div className={'mt-8 mb-8'}>{children}</div>
-      </div>
-      <ThemeToggle/>
-    </Providers>
-    </body>
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  return (
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+        <Providers>
+          <SiteHeader />
+          <main className="mx-auto max-w-5xl px-4">
+            {children}
+          </main>
+          <SiteFooter />
+        </Providers>
+        <Analytics />
+      </body>
     </html>
   );
 }

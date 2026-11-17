@@ -1,0 +1,15 @@
+# secrets: docker-compose passes .env in at runtime
+.env*
+
+# installed and built inside the image
+node_modules
+.next
+*.tsbuildinfo
+next-env.d.ts
+
+# repo and editor
+.git
+.idea
+.vscode
+.DS_Store
+npm-debug.log*

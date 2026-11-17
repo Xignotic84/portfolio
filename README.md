@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# xignotic.dev
 
-## Getting Started
+Personal site. Next.js 16, React 19, Tailwind CSS 4, TanStack Query, and components from [beUI](https://beui.dev).
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.npmrc` sets `ignore-scripts=true`, so no dependency install scripts run.
+Dependencies were installed through [safe-chain](https://github.com/AikidoSec/safe-chain).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Optional, in `.env`:
 
-## Learn More
+| Variable | Used for |
+| --- | --- |
+| `TOPSTATS_API_KEY` | Live "bots tracked" count on the TopStats.gg project card (topstats.gg, profile menu, Get Token). Hidden when unset. |
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev`: dev server
+- `npm run build` / `npm start`: production build and server
+- `npm run lint`, `npm run typecheck`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+Content lives in `src/lib/`; edit these to update the site:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `site.ts`: name, links and SEO defaults
+- `data/experience.ts`, `data/projects.ts`, `data/stack.ts`: page content
+- `data/case-studies/`: project pages at `/projects/<id>` (a project with a `caseStudy` gets one)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Components in `src/components/`:
+
+- `sections/`: the page sections (hero, experience, projects, stack)
+- `experience/`, `projects/`: pieces those sections are built from
+- `case-study/`: the project page header and story timeline
+- `layout/`: providers, header, footer, analytics, JSON-LD
+- `ui/`: small shared building blocks (section, tag list, links, rich text)
+- `motion/`: beUI components, trimmed to what's used (see `THIRD_PARTY_NOTICES.md`)
+
+Shared styles live in `src/app/globals.css`: colour tokens, the `card` and `link` utilities,
+heading weights and one focus outline for every interactive element.
+
+`src/lib/og/` renders the favicon, Apple icon and social preview images.
+
+`src/app/api/topstats/` proxies the live TopStats.gg count so the API key stays on the server.
+
+## Docker
+
+```bash
+docker compose up --build
+```
