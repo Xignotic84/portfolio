@@ -13,9 +13,9 @@ export function CompanyHovercard({ entry }: { entry: ExperienceEntry }) {
   const roleCount = new Set(entry.positions.map((position) => position.title)).size;
 
   return (
-    <Popover>
-      <PopoverTrigger className="-mx-2 inline-flex h-8 items-center rounded-lg px-2 underline decoration-border-strong decoration-dotted underline-offset-4 data-[state=open]:decoration-transparent">
-        {entry.organization}
+    <Popover className="max-w-full">
+      <PopoverTrigger className="-mx-2 inline-flex h-8 min-w-0 items-center rounded-lg px-2 underline decoration-border-strong decoration-dotted underline-offset-4 data-[state=open]:decoration-transparent">
+        <span className="truncate">{entry.organization}</span>
       </PopoverTrigger>
       <PopoverContent className="w-80 space-y-3 text-sm">
         <div className="flex items-center gap-3">

@@ -11,7 +11,7 @@ export function ExperienceTimeline({ entries }: { entries: ExperienceEntry[] }) 
         <li key={entry.id} className="space-y-3 p-4 sm:p-5">
           <div className="flex items-center gap-3">
             <CompanyLogo src={entry.logo} inset={entry.logoInset} size="sm" />
-            <h3 className="text-lg">
+            <h3 className="min-w-0 text-lg">
               <CompanyHovercard entry={entry} />
             </h3>
             {isCurrent(entry) ? <CurrentBadge entry={entry} /> : null}
