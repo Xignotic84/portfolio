@@ -14,6 +14,9 @@ export const site = {
   currentEmployer: {
     name: "Booking.com",
     url: "https://booking.com",
+    title: "Software Engineer",
+    logo: "/booking.com.png",
+    brandColor: "#006ce4",
   },
   keywords: [
     "Franz Herrmann",
