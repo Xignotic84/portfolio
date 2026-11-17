@@ -1,16 +1,11 @@
 # xignotic.dev
 
-Personal site. Next.js 16, React 19, Tailwind CSS 4, TanStack Query, and components from [beUI](https://beui.dev).
-
 ## Setup
 
 ```bash
 npm install
 npm run dev
 ```
-
-`.npmrc` sets `ignore-scripts=true`, so no dependency install scripts run.
-Dependencies were installed through [safe-chain](https://github.com/AikidoSec/safe-chain).
 
 ### Environment
 
