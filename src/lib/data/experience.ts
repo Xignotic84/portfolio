@@ -82,7 +82,7 @@ export const WORK_EXPERIENCE: ExperienceEntry[] = [
         start: "2026-03",
         employmentType: "Contract",
         highlights: [
-          "Designed, implemented, and launched the frontend for the new Ads system, with backfill onto legacy auction slots to preserve inventory during rollout, generating **tens of thousands of euros in recurring monthly ad revenue**.",
+          "Designed, implemented, and launched the frontend for the new Ads system, with backfill onto legacy auction slots to preserve inventory during rollout, generating **thousands of euros in recurring monthly ad revenue**.",
           "Built a WYSIWYG editor enabling creators to publish rich content to the platform, resulting in a **37.8pp** increase in user-submitted content in the first month after launch.",
         ],
         icon: "code",
